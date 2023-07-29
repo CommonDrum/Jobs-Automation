@@ -32,12 +32,11 @@ class Employment(BasicInfo):
 
 
 class Education(BasicInfo):
-    def __init__(self, name: str, description: str, start_date: str, end_date: str, degree: str, field_of_study: str):
+    def __init__(self, name: str, description: str, start_date: str, end_date: str, degree: str):
         super().__init__(name, description, "education")
         self.start_date = start_date
         self.end_date = end_date
         self.degree = degree
-        self.field_of_study = field_of_study
 
     def to_dict(self):
         parent_dict = super().to_dict()
@@ -45,7 +44,6 @@ class Education(BasicInfo):
             'start_date': self.start_date,
             'end_date': self.end_date,
             'degree': self.degree,
-            'field_of_study': self.field_of_study
         })
         return parent_dict
 
@@ -98,6 +96,6 @@ class PersonalInfo():
                 'linkedin' : self.linkedin,
                 'website' : self.website 
                 }
-        return dict
+        return vars(self)
         
         
